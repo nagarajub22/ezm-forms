@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'form-stepper-footer',
@@ -6,5 +6,4 @@ import { Component } from '@angular/core';
   styleUrl: './form-stepper-footer.component.scss'
 })
 export class FormStepperFooterComponent {
-
 }

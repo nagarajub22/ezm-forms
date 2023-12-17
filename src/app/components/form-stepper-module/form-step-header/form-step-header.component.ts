@@ -9,4 +9,6 @@ import { IFormStep } from '../models/form-stepper.interface';
 export class FormStepHeaderComponent {
   @Input() title!: string;
   @Input({required: true}) steps!: IFormStep[];
+
+  @Input() selectedStepIndex!: number;
 }

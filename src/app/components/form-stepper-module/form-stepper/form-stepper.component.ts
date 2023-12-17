@@ -3,11 +3,9 @@ import {
   Component,
   ContentChildren,
   Input,
-  QueryList,
-  computed,
-  signal,
+  QueryList, signal
 } from '@angular/core';
-import { IFormStep, IFormStepper } from '../models/form-stepper.interface';
+import { IFormStepper } from '../models/form-stepper.interface';
 import { FormStepComponent } from '../form-step/form-step.component';
 
 @Component({
@@ -23,17 +21,18 @@ export class FormStepperComponent implements IFormStepper, AfterContentInit {
   /** Class properties */
   formSteps = signal<FormStepComponent[]>([]);
 
-  selectedIndex = 0;
+  selectedStepIndex = 0;
+
   /**
    * Life-cycle Methods
    */
 
-  ngOnInit() {
-
-  }
+  ngOnInit() {}
 
   ngAfterContentInit() {
-    const finalSteps = this.steps.map((step) => {
+    const finalSteps = this.steps.map((step, index) => {
+      step.editable = index === this.selectedStepIndex;
+      step.hidden = index !== this.selectedStepIndex;
       return step;
     });
     this.formSteps.set(finalSteps);
@@ -42,11 +41,14 @@ export class FormStepperComponent implements IFormStepper, AfterContentInit {
   /**
    * Public Methods
    */
-  public onSubmit() {}
 
-  public changeStep(index: number) {
+  public selectStep(index: number) {
+    this.selectedStepIndex = index;
     this.formSteps().forEach((step, stepIndex) => {
-      step.hidden = index === stepIndex ? false : true;
-    })
+      step.editable = stepIndex === this.selectedStepIndex;
+      step.hidden = stepIndex !== this.selectedStepIndex;
+    });
   }
+
+  public onSubmit() {}
 }

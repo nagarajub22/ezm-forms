@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormStepperModule } from './components/form-stepper-module/form-stepper.module';
 import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -6,6 +6,7 @@ import { FormService } from './services/form.service';
 import { FORM_1_DATA } from './form-data/form1';
 import { FormControlTypeComponent } from './form-control-type/form-control-type.component';
 import { IFormUI } from './models/form-ui.model';
+import { FormStepperComponent } from './components/form-stepper-module/form-stepper/form-stepper.component';
 
 @Component({
   selector: 'app-root',
@@ -24,6 +25,9 @@ import { IFormUI } from './models/form-ui.model';
   styleUrl: './app.component.scss'
 })
 export class AppComponent implements OnInit{
+
+  @ViewChild(FormStepperComponent) stepperForm!: FormStepperComponent;
+
   title = 'ez-management';
 
   formData = FORM_1_DATA as unknown as IFormUI;
@@ -44,6 +48,17 @@ export class AppComponent implements OnInit{
 
   ngOnInit() {
     
+  }
+
+  /**
+   * Public Methods
+   */
+  onAction(type: string) {
+    if(type === 'next') {
+      this.stepperForm.selectStep(this.stepperForm.selectedStepIndex + 1);
+    } else if (type === 'previous') {
+      this.stepperForm.selectStep(this.stepperForm.selectedStepIndex - 1);
+    }
   }
 
   /** Private Methods */

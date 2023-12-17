@@ -1,8 +1,12 @@
 <form-stepper [title]="formData.title" #stepper>
-    <div ngProjectAs="form-content">
+    <div class="form-step-content" ngProjectAs="form-content">
         @if (formData.steps && formData.steps.length > 0) {
             @for (step of formData.steps; track i; let i = $index) {
-                <form-step [title]="step.title" [formGroup]="formGroups[i]" [index]="i">
+                <form-step 
+                    [title]="step.title" 
+                    [formGroup]="formGroups[i]" 
+                    [index]="i"
+                >
                     <form [formGroup]="formGroups[i]">
                         @for (control of step.controls; track cIndex; let cIndex = $index) {
                             <form-control-type
@@ -16,4 +20,9 @@
             }
         }
     </div>
+
+    <form-stepper-footer>
+        <button type="button" (click)="onAction('previous')" [attr.disabled]="stepper.selectedStepIndex === 0 ? '' : null">Previous</button>
+        <button type="button" (click)="onAction('next')" [attr.disabled]="formGroups[stepper.selectedStepIndex].valid === false ? '' : null">Next</button>
+    </form-stepper-footer>
 </form-stepper>

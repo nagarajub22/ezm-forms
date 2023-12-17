@@ -1,0 +1,39 @@
+.step-header-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    height: 50px;
+    align-items: center;
+    position: relative;
+
+    &::before {
+        content: "";
+        height: 2px;
+        width: 100%;
+        position: absolute;
+        top: 24px;
+        background-color: #ddd;
+        z-index: 1;
+    }
+}
+
+.step-header {
+    width: 20px;
+    height: 20px;
+    background: #ddd;
+    color: #afafaf;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 20px;
+    position: relative;
+    z-index: 2;
+
+    &.active {
+        background: #0033ff;
+        color: #fff;
+    }
+    &.completed {
+        background: #0d9a87;
+        color: #fff;
+    }
+}
