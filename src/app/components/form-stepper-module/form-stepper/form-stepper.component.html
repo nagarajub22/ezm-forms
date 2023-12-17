@@ -1,0 +1,11 @@
+<form-stepper-header
+    [title]="title"
+    [steps]="formSteps()"
+>
+</form-stepper-header>
+
+<ng-content select="form-content"></ng-content>
+
+<form-stepper-footer>
+    <ng-content select="form-footer"></ng-content>
+</form-stepper-footer>

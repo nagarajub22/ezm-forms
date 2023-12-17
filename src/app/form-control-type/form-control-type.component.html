@@ -1,0 +1,23 @@
+@if (control.type === controlTypes.Text) {
+    <div class="form-control">
+        <label for="">{{control.label}}</label>
+        <input 
+            type="text" 
+            [formControl]="fgControl"
+            [id]="control.id" 
+            [name]="control.id" 
+            [attr.required]="control.required ? '' : null"
+        />
+    </div>
+} @else if (control.type === controlTypes.Date) {
+    <div class="form-control">
+        <label for="">{{control.label}}</label>
+        <input 
+            type="date" 
+            [formControl]="fgControl"
+            [id]="control.id" 
+            [name]="control.id" 
+            [attr.required]="control.required ? '' : null"
+        />
+    </div>
+}

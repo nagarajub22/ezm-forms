@@ -1,0 +1,19 @@
+.form-control {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.form-control {
+    padding: 0px 10px;
+    margin-bottom: 15px;
+}
+
+.form-control label {
+    line-height: 1;
+}
+
+.form-control input {
+    margin-top: 10px;
+    height: 32px;
+}
