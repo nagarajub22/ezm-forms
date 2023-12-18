@@ -7,11 +7,15 @@ import {
   FormsModule,
   ReactiveFormsModule,
 } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'form-control-type',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule
+  ],
   templateUrl: './form-control-type.component.html',
   styleUrl: './form-control-type.component.scss',
 })

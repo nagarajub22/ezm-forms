@@ -1,12 +1,13 @@
 .form-control {
     display: flex;
     flex-direction: column;
-}
-
-
-.form-control {
     padding: 0px 10px;
     margin-bottom: 15px;
+
+
+    &.error input {
+        border-color: #ff0000;
+    }
 }
 
 .form-control label {
@@ -14,7 +15,10 @@
 }
 
 .form-control input {
+    font-size: 16px;
     margin-top: 10px;
     height: 32px;
     border: 1px solid #c9c9c9;
+    background: none;
+    appearance: none;
 }

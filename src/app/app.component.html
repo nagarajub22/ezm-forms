@@ -1,28 +1,331 @@
-<form-stepper [title]="formData.title" #stepper>
-    <div class="form-step-content" ngProjectAs="form-content">
-        @if (formData.steps && formData.steps.length > 0) {
-            @for (step of formData.steps; track i; let i = $index) {
-                <form-step 
-                    [title]="step.title" 
-                    [formGroup]="formGroups[i]" 
-                    [index]="i"
-                >
-                    <form [formGroup]="formGroups[i]">
-                        @for (control of step.controls; track cIndex; let cIndex = $index) {
-                            <form-control-type
-                                [control]="control"
-                                [fgControl]="formGroups[i].controls[control.id]"
-                            >
-                            </form-control-type>
-                        }
-                    </form>
-                </form-step>
-            }
-        }
+@if (showReport) {
+
+    <div class="form-report">
+        <table>
+            <thead>
+                <th>{{title}}</th>
+            </thead>
+            <tbody>
+                <tr class="empty-row">
+                    <td>&nbsp; &nbsp;</td>
+                </tr>
+                <tr>
+                    <td>CLIENT</td>
+                    <td>{{finalValues['client']}}</td>
+                    <td>UNIT MANUFACTURER</td>
+                    <td>{{finalValues['unit_manufacturer']}}</td>
+                </tr>
+                <tr>
+                    <td>DATE</td>
+                    <td>{{finalValues['date']}}</td>
+                    <td>MODEL NUMBER</td>
+                    <td>{{finalValues['model_number']}}</td>
+                </tr>
+                <tr>
+                    <td>ENGINEER</td>
+                    <td>{{finalValues['engineer']}}</td>
+                    <td>SERIAL NUMBER</td>
+                    <td>{{finalValues['serial_number']}}</td>
+                </tr>
+                <tr>
+                    <td>&nbsp; &nbsp;</td>
+                </tr>
+                <tr>
+                    <td>UNIT NUMBER 1</td>
+                </tr>
+                <tr>
+                    <td>&nbsp; &nbsp;</td>
+                </tr>
+                <tr>
+                    <td>SECTION 1: SYSTEM DETAILS</td>
+                    <td>&nbsp; &nbsp;</td>
+                    <td>SECTION 2: ELECTRICAL CHECKS</td>
+                    <td>&nbsp; &nbsp;</td>
+                </tr>
+                <tr>
+                    <td>&nbsp; &nbsp;</td>
+                </tr>
+                <tr>
+                    <td>SYSTEM TYPE</td>
+                    <td>{{finalValues['system_type']}}</td>
+                    <td>&nbsp; &nbsp;</td>
+                    <td>COMPRESSOR FLA</td>
+                    <td>{{finalValues['compressor_fla']}}</td>
+                    <td>&nbsp; &nbsp;</td>
+                </tr>
+                <tr>
+                    <td>AIR/WATER COOLED?</td>
+                    <td>{{finalValues['air_water_cooled']}}</td>
+                    <td>&nbsp; &nbsp;</td>
+                    <td>COMPRESSORR RUN AMPS</td>
+                    <td>{{finalValues['compressor_run_namps']}}</td>
+                    <td>&nbsp; &nbsp;</td>
+                </tr>
+                <tr>
+                    <td>TEMPERATURE SETPOINT</td>
+                    <td>{{finalValues['temperature_set_point']}}</td>
+                    <td>&nbsp; &nbsp;</td>
+                    <td>MAIN FAN FLA</td>
+                    <td>{{finalValues['main_fan_fla']}}</td>
+                    <td>&nbsp; &nbsp;</td>
+                </tr>
+                <tr>
+                    <td>DEAD BAND</td>
+                    <td>{{finalValues['']}}</td>
+                    <td>&nbsp; &nbsp;</td>
+                    <td>MAIN FAN RUN AMPS</td>
+                    <td>{{finalValues['main_fan_run_amps']}}</td>
+                    <td>&nbsp; &nbsp;</td>
+                </tr>
+                <tr>
+                    <td>HUMIDITY SETPOINT</td>
+                    <td>{{finalValues['humidity_setpoint']}}</td>
+                    <td>&nbsp; &nbsp;</td>
+                    <td>HUMIDIFIER FLA</td>
+                    <td>{{finalValues['humidifier_fla']}}</td>
+                    <td>&nbsp; &nbsp;</td>
+                </tr>
+                <tr>
+                    <td>DEAD BAND</td>
+                    <td>{{finalValues['dead_band_1']}}</td>
+                    <td>&nbsp; &nbsp;</td>
+                    <td>HUMIDIFIER RUN AMPS</td>
+                    <td>{{finalValues['humidifier_run_amps']}}</td>
+                    <td>&nbsp; &nbsp;</td>
+                </tr>
+                <tr>
+                    <td>HUMIDIFIER TYPE</td>
+                    <td>{{finalValues['humidifier_type']}}</td>
+                    <td>&nbsp; &nbsp;</td>
+                    <td>HEATER 1 FLA</td>
+                    <td>{{finalValues['heater_1_fla']}}</td>
+                    <td>&nbsp; &nbsp;</td>
+                </tr>
+                <tr>
+                    <td>HUMIDIFIER CONDITION</td>
+                    <td>{{finalValues['humidifier_condition']}}</td>
+                    <td>&nbsp; &nbsp;</td>
+                    <td>HEATER 1 RUN AMPS</td>
+                    <td>{{finalValues['heater_1_run_amps']}}</td>
+                    <td>&nbsp; &nbsp;</td>
+                </tr>
+                <tr>
+                    <td>ROOM TEMPERATURE</td>
+                    <td>{{finalValues['room_temperature']}}</td>
+                    <td>&nbsp; &nbsp;</td>
+                    <td>HEATER 2 FLA</td>
+                    <td>{{finalValues['heater_2_fla']}}</td>
+                    <td>&nbsp; &nbsp;</td>
+                </tr>
+                <tr>
+                    <td>ROOM HUMIDITY</td>
+                    <td>{{finalValues['room_humidity']}}</td>
+                    <td>&nbsp; &nbsp;</td>
+                    <td>HEATER 2 RUN AMPS</td>
+                    <td>{{finalValues['heater_2_run_amps']}}</td>
+                    <td>&nbsp; &nbsp;</td>
+                </tr>
+                <tr>
+                    <td>GENERAL CASING CONDITION</td>
+                    <td>{{finalValues['general_casing_condition']}}</td>
+                    <td>&nbsp; &nbsp;</td>
+                    <td>HEATER 3 FLA</td>
+                    <td>{{finalValues['heater_3_fla']}}</td>
+                    <td>&nbsp; &nbsp;</td>
+                </tr>
+                <tr>
+                    <td>ELECTRICAL CONDITION</td>
+                    <td>{{finalValues['electrical_condition']}}</td>
+                    <td>&nbsp; &nbsp;</td>
+                    <td>HEATER 3 RUN AMPS</td>
+                    <td>{{finalValues['heater_3_run_amps']}}</td>
+                    <td>&nbsp; &nbsp;</td>
+                </tr>
+                <tr>
+                    <td>&nbsp; &nbsp;</td>
+                </tr>
+                <tr>
+                    <td>SECTION 3: REFRIGERATION CIRCUIT CHECKS</td>
+                    <td>&nbsp; &nbsp;</td>
+                    <td>SECTION 4: MECHANICAL CHECKS</td>
+                    <td>&nbsp; &nbsp;</td>
+                </tr>
+                <tr>
+                    <td>&nbsp; &nbsp;</td>
+                </tr>
+                <tr>
+                    <td>GAS TYPE</td>
+                    <td>{{finalValues['gas_type']}}</td>
+                    <td>&nbsp; &nbsp;</td>
+                    <td>MAIN FAN VEE BELTS</td>
+                    <td>{{finalValues['main_fan_vee_belts']}}</td>
+                    <td>&nbsp; &nbsp;</td>
+                </tr>
+                <tr>
+                    <td>SUCTION PRESSURE</td>
+                    <td>{{finalValues['suction_pressure']}}</td>
+                    <td>&nbsp; &nbsp;</td>
+                    <td>DRIVE PACKAGE ALIGNMENT</td>
+                    <td>{{finalValues['drive_package_alignment']}}</td>
+                    <td>&nbsp; &nbsp;</td>
+                </tr>
+                <tr>
+                    <td>SUCTION TEMPERATURE</td>
+                    <td>{{finalValues['suction_temperature']}}</td>
+                    <td>&nbsp; &nbsp;</td>
+                    <td>GREASE BEARINGS</td>
+                    <td>{{finalValues['grease_bearings']}}</td>
+                    <td>&nbsp; &nbsp;</td>
+                </tr>
+                <tr>
+                    <td>DISCHARGE PRESSURE</td>
+                    <td>{{finalValues['discharge_pressure']}}</td>
+                    <td>&nbsp; &nbsp;</td>
+                    <td>INDOOR AIR FILTERS</td>
+                    <td>{{finalValues['indoor_air_filters']}}</td>
+                    <td>&nbsp; &nbsp;</td>
+                </tr>
+                <tr>
+                    <td>DISCHARGE TEMPERATURE</td>
+                    <td>{{finalValues['discharge_temperature']}}</td>
+                    <td>&nbsp; &nbsp;</td>
+                    <td>COMPRESSOR OIL LEVELS</td>
+                    <td>{{finalValues['compressor_oil_levels']}}</td>
+                    <td>&nbsp; &nbsp;</td>
+                </tr>
+                <tr>
+                    <td>LIQUID LINE TEMPERATURE</td>
+                    <td>{{finalValues['liquid_line_temperature']}}</td>
+                    <td>&nbsp; &nbsp;</td>
+                    <td>COMPRESSOR MOUNTINGS</td>
+                    <td>{{finalValues['compressor_mountings']}}</td>
+                    <td>&nbsp; &nbsp;</td>
+                </tr>
+                <tr>
+                    <td>SIGHT GLASS STATE</td>
+                    <td>{{finalValues['sight_glass_state']}}</td>
+                    <td>&nbsp; &nbsp;</td>
+                    <td>GENERAL BRACKETING</td>
+                    <td>{{finalValues['general_bracketing']}}</td>
+                    <td>&nbsp; &nbsp;</td>
+                </tr>
+                <tr>
+                    <td>OUTSIDE AMBIENT TEMP</td>
+                    <td>{{finalValues['outside_ambient_temp']}}</td>
+                    <td>&nbsp; &nbsp;</td>
+                    <td>EVAP COIL CONDITION</td>
+                    <td>{{finalValues['evap_coil_condition']}}</td>
+                    <td>&nbsp; &nbsp;</td>
+                </tr>
+                <tr>
+                    <td>AIR OFF COND</td>
+                    <td>{{finalValues['air_off_cond']}}</td>
+                    <td>&nbsp; &nbsp;</td>
+                    <td>PIPERWORK CONDITION</td>
+                    <td>{{finalValues['pipework_condition']}}</td>
+                    <td>&nbsp; &nbsp;</td>
+                </tr>
+                <tr>
+                    <td>AIR ON COND</td>
+                    <td>{{finalValues['air_on_cond']}}</td>
+                    <td>&nbsp; &nbsp;</td>
+                    <td>ALARMS CLEARED</td>
+                    <td>{{finalValues['alarms_cleared']}}</td>
+                    <td>&nbsp; &nbsp;</td>
+                </tr>
+                <tr>
+                    <td>NO OF COND FANS</td>
+                    <td>{{finalValues['no_of_cond_fans']}}</td>
+                    <td>&nbsp; &nbsp;</td>
+                    <td>CLEAN OUT INTERIOR SECTIONS</td>
+                    <td>{{finalValues['clean_out_interiors_sections']}}</td>
+                    <td>&nbsp; &nbsp;</td>
+                </tr>
+                <tr>
+                    <td>COND FANS RUN AMP</td>
+                    <td>{{finalValues['cond_fans_run_amps']}}</td>
+                    <td>&nbsp; &nbsp;</td>
+                    <td>CLEAN AROUND COND SECTION</td>
+                    <td>{{finalValues['clean_around_cond_section']}}</td>
+                    <td>&nbsp; &nbsp;</td>
+                </tr>
+
+                <tr>
+                    <td>GENERAL NOTES</td>
+                </tr>
+                <tr></tr>
+                <tr></tr>
+                <tr></tr>
+                <tr></tr>
+                <tr></tr>
+                <tr></tr>
+                <tr></tr>
+                <tr></tr>
+                <tr></tr>
+                <tr></tr>
+                <tr></tr>
+
+                <tr><td>&nbsp; &nbsp;</td></tr>
+                <tr>
+                    <td>&nbsp; &nbsp;</td>
+                    <td>&nbsp; &nbsp;</td>
+                    <td>&nbsp; &nbsp;</td>
+                    <td>&nbsp; &nbsp;</td>
+                    <td>&nbsp; &nbsp;</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 
-    <form-stepper-footer>
-        <button type="button" (click)="onAction('previous')" [attr.disabled]="stepper.selectedStepIndex === 0 ? '' : null">Previous</button>
-        <button type="button" (click)="onAction('next')" [attr.disabled]="formGroups[stepper.selectedStepIndex].valid === false ? '' : null">Next</button>
-    </form-stepper-footer>
-</form-stepper>
+
+} @else {
+    <form-stepper [title]="formData.title" #stepper>
+        <div class="form-step-content" ngProjectAs="form-content">
+            @if (formData.steps && formData.steps.length > 0) {
+                @for (step of formData.steps; track i; let i = $index) {
+                    <form-step 
+                        [title]="step.title" 
+                        [formGroup]="formGroups[i]" 
+                        [index]="i"
+                    >
+                        <form [formGroup]="formGroups[i]">
+                            @for (control of step.controls; track cIndex; let cIndex = $index) {
+                                <form-control-type
+                                    [control]="control"
+                                    [fgControl]="formGroups[i].controls[control.id]"
+                                >
+                                </form-control-type>
+                            }
+                        </form>
+                    </form-step>
+                }
+            }
+        </div>
+    
+        <form-stepper-footer>
+            <button 
+                type="button"
+                class="btn-previous"
+                (click)="onAction('previous')"
+                [attr.disabled]="stepper.selectedStepIndex === 0 ? '' : null">Previous</button>
+            @if (stepper.selectedStepIndex < 4) {
+                <button 
+                    type="button" 
+                    class="btn-next"
+                    (click)="onAction('next')" 
+                    [attr.disabled]="formGroups[stepper.selectedStepIndex].valid === false ? '' : null">Next</button>
+            }
+            @if (stepper.selectedStepIndex === 4) {
+                <button 
+                type="button" 
+                class="btn-complete"
+                (click)="onAction('complete')"
+                [attr.disabled]="formGroups[stepper.selectedStepIndex].valid === false ? '' : null">Generate Report</button>
+            }
+        </form-stepper-footer>
+    </form-stepper>
+    
+}
+
+
+

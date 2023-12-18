@@ -1,4 +1,4 @@
-<div class="form-control">
+<div class="form-control" [ngClass]="{'error': (fgControl.dirty && !fgControl.valid) || (fgControl.touched && !fgControl.valid) }">
   <label [for]="control.id">{{ control.label }}</label>
   @if (control.type === controlTypes.Text) {
     <input

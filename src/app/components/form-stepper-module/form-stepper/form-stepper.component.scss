@@ -1,7 +1,9 @@
 :host {
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    height: var(--window-height);
+	width: 100%;
+	height: 100svh;
 }
 
 form-stepper-header {

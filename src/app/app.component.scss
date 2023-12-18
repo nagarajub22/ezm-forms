@@ -9,3 +9,59 @@ form-step {
         display: block;
     }
 }
+form-stepper-footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+form-stepper-footer button {
+    height: 30px;
+    margin: 0px 10px;
+    flex: 1 1 auto;
+    border: none;
+    color: #fff;
+
+    &.btn-previous {
+        background-color: #d5d5d5;
+        color: #000;
+    }
+
+    &.btn-next {
+        background-color: #0033ff;
+        color: #fff;
+    }
+
+    &.btn-complete {
+        background-color: #16925f;
+        color: #fff;
+    }
+
+    &.btn-previous:disabled,
+    &.btn-next:disabled,
+    &.btn-complete:disabled {
+        color: #ddd;
+        background-color: #eee;
+    }
+}
+
+table {
+    width: 100%;
+    padding: 10px;
+
+    th, td {
+        height: 24px;
+        vertical-align: middle;
+    }
+
+    .empty-row {
+        td {
+            width: 100%;
+        }
+    }
+}
+
+table, th, td {
+    border: 1px solid rgb(0, 0, 0);
+    border-collapse: collapse;
+  }
