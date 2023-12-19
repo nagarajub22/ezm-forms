@@ -9,6 +9,7 @@ import { IFormUI } from './models/form-ui.model';
 import { FormStepperComponent } from './components/form-stepper-module/form-stepper/form-stepper.component';
 import { combineLatest, concatAll, debounce, debounceTime, from, merge, reduce } from 'rxjs';
 import { FormValueReportComponent } from './form-value-report/form-value-report.component';
+import { FORM_2_DATA } from './form-data/form2';
 
 @Component({
   selector: 'app-root',
@@ -33,11 +34,13 @@ export class AppComponent implements OnInit{
 
   title = 'ez-management';
 
-  formData = FORM_1_DATA as unknown as IFormUI;
+  formData = FORM_2_DATA as unknown as IFormUI;
   formGroups!: FormGroup[];
 
-  showReport = true;
+  showReport = false;
   finalValues!: {[key:string]: any};
+
+  
 
   /**
    * 

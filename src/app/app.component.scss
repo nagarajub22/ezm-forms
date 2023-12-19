@@ -45,6 +45,10 @@ form-stepper-footer button {
     }
 }
 
+.form-report {
+	padding: 25px;
+}
+
 table {
     width: 100%;
     padding: 10px;
@@ -52,16 +56,37 @@ table {
     th, td {
         height: 24px;
         vertical-align: middle;
+        border: 1px solid #000;
+        padding: 0px 10px;
     }
 
     .empty-row {
         td {
+            border: none;
             width: 100%;
         }
     }
+
+    .empty-column {
+        border: none;
+        width: 10%;
+    }
+
+	.report-title, th {
+		border: 3px solid #000;
+		font-weight: bold;
+	}
+	.report-label {
+		width: 12%;
+	}
+	.report-value {
+		width: 25%;
+	}
+	.report-empty-value {
+		width: 10%;
+	}
 }
 
 table, th, td {
-    border: 1px solid rgb(0, 0, 0);
     border-collapse: collapse;
-  }
+}

@@ -1,4 +1,4 @@
-export const FORM_1_DATA = {
+export const FORM_2_DATA = {
     "title": "CLOSE CONTROL UNIT MAINTENANCE TEST RECORD",
     "steps": [
         {
@@ -187,13 +187,13 @@ export const FORM_1_DATA = {
                     "label": "HEATER 3 FLA",
                     "type": "text",
                     "required": true
-                }
+                },
                 {
                     "id": "heater_3_run_amps",
                     "label": "HEATER 3 RUN AMPS",
                     "type": "text",
                     "required": true
-                },
+                }
             ]
         },
         {
