@@ -335,20 +335,21 @@
 } @else {
 <form-stepper [title]="formData.title" #stepper>
   <div class="form-step-content" ngProjectAs="form-content">
-    @if (formData.steps && formData.steps.length > 0) { @for (step of
-    formData.steps; track i; let i = $index) {
-    <form-step [title]="step.title" [formGroup]="formGroups[i]" [index]="i">
-      <form [formGroup]="formGroups[i]">
-        @for (control of step.controls; track cIndex; let cIndex = $index) {
-        <form-control-type
-          [control]="control"
-          [fgControl]="formGroups[i].controls[control.id]"
-        >
-        </form-control-type>
+    @if (formData.steps && formData.steps.length > 0) { 
+        @for (step of formData.steps; track i; let i = $index) {
+            <form-step [title]="step.title" [formGroup]="formGroups[i]" [index]="i">
+            <form [formGroup]="formGroups[i]">
+                @for (control of step.controls; track cIndex; let cIndex = $index) {
+                    <form-control-type
+                    [control]="control"
+                    [fgControl]="formGroups[i].controls[control.id]"
+                    >
+                    </form-control-type>
+                }
+            </form>
+            </form-step>
         }
-      </form>
-    </form-step>
-    } }
+    }
   </div>
 
   <form-stepper-footer>

@@ -1,6 +1,7 @@
 <form-stepper-header
     [title]="title"
     [steps]="formSteps()"
+    (emitStepClick)="selectStep($event)"
 >
 </form-stepper-header>
 

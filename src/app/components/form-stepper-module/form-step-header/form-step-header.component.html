@@ -4,7 +4,7 @@
 
 <div class="step-header-wrapper">
   @for (item of steps; let i = $index; track i) {
-    <div class="step-header" [ngClass]="{'active': item.editable, 'completed': item.completed}">{{i}}</div>
+    <div class="step-header" [ngClass]="{'active': item.editable, 'completed': item.completed}" (click)="onClickHeader(i)">{{i}}</div>
     @if (selectedStepIndex === i) {
         <h4>{{item.title}}</h4>
     }
